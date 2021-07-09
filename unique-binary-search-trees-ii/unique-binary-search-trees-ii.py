@@ -6,25 +6,21 @@
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[TreeNode]:
-        if n ==0:
-            return []
-   
         return self.helper(1,n)
+      
     def helper(self,start,end):
-        if start >end:
-            return[None]
+        if start>end:
+            return [None]
         res = []
-        
         for i in range(start,end+1):
-            all_left = self.helper(start,i-1)
-            all_right = self.helper(i+1,end)
-            
-            for l in all_left:
-                for r in all_right:
-                    root_ = TreeNode(i)
-                    root_.left = l
-                    root_.right = r
-                    res.append(root_)
-        return res              
-                    
+            l = self.helper(start,i-1)
+            r = self.helper(i+1,end)
+            for l_ in l:
+                for r_ in r:
+                    root = TreeNode(i)
+                    root.left = l_
+                    root.right = r_
+                    res.append(root)
+        return res     
+        
         

@@ -13,7 +13,7 @@ class Solution:
         fast = head
         
         while fast and fast.next:
-            pre = head
+            # pre = head
             slow = slow.next 
             fast = fast.next.next 
         mid = slow

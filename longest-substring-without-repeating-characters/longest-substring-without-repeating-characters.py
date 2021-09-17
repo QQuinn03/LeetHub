@@ -10,14 +10,14 @@ class Solution(object):
         res = 0
         
         while right<len(s):
-            if s[right] in dic:
-                if left <=dic[s[right]]:
+            if s[right] not in dic:
+                res = max(res,right-left+1)
+            else:
+                if dic[s[right]]>=left:
                     left = dic[s[right]]+1
-            dic[s[right]]=right
                     
-            res= max(res,right-left+1)
+                else:
+                    res=max(res,right-left+1)
+            dic[s[right]]=right
             right+=1
-            
-            
-        return res    
-                
+        return res     

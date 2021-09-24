@@ -4,15 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        if sum(nums)==0:
-            return nums
-        i = 0
-        j = 0
-        while j <len(nums):
-            if nums[j]==0:
-                j+=1
+        idx_zero = 0
+        idx = 0
+        
+        for i in range(len(nums)):
+            if nums[i]==0:
+                pass
             else:
-                nums[i],nums[j]=nums[j],nums[i]
-                i+=1
-                j+=1
+                nums[idx_zero],nums[i]=nums[i],nums[idx_zero]
+                idx_zero+=1
+                
                 

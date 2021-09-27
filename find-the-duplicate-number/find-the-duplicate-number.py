@@ -4,11 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        duplicate=0
-        for num in nums:
-            idx = abs(num)
-          
-            if nums[idx]<0:
-                duplicate=idx
-            nums[idx]=-nums[idx] 
-        return duplicate    
+        slow = 0
+        fast = 0
+        
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow==fast:
+                break
+        cur = 0
+        while cur!=slow:
+            cur = nums[cur]
+            slow = nums[slow]
+        return cur     

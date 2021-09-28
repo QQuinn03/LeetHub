@@ -1,31 +1,30 @@
-class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        start =[]
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        start=[]
         end = []
+        
         for i in intervals:
             start.append(i[0])
             end.append(i[1])
+            
         start.sort()
         end.sort()
-        
         res=[]
-        idx = 0
-        high=0
-        low=0
-        
+        idx=0
         while idx<len(start):
-            low = idx
-            path = []
-            while idx<len(start)-1 and start[idx+1]<=end[idx]:
+            arr=[]
+            arr.append(start[idx])
+            while idx+1<len(start)and start[idx+1]<=end[idx]:
                 idx+=1
             high=idx
-            
-            path.append(start[low])
-            path.append(end[high])
-            res.append(path)
-            
-            
-            
+            arr.append(end[high])
+            res.append(arr)
             idx+=1
-        return res     
+        return res    
+            
                 
+        

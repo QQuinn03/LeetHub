@@ -1,27 +1,33 @@
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
         if not nums:
-            return nums
-        res = []
+            return []
         nums.sort()
-        
+        res=[]
         for i in range(len(nums)):
+            if nums[i]>0:
+                break
             if i>0 and nums[i]==nums[i-1]:
                 continue
-            l = i+1
-            r = len(nums)-1
+            self.helper(nums,i,res)
+        return res
+    
+    def helper(self,nums,i,res):
+        j = i+1
+        seen = set()
+        while j<len(nums):
             
-            while l<r:
-                if nums[i]+nums[l]+nums[r]==0:
-                    res.append([nums[i],nums[l],nums[r]])
-                    while l<r and nums[l]==nums[l+1]:
-                        l+=1
-                    while l<r and nums[r]==nums[r-1]:
-                        r-=1
-                    l+=1
-                    r-=1
-                elif nums[i]+nums[l]+nums[r]>0:
-                    r-=1
-                else:
-                    l+=1
-        return res            
+            target=-(nums[i]+nums[j])
+            if target in seen:
+                res.append([nums[i],nums[j],target])
+                while j+1<len(nums) and nums[j]==nums[j+1]:
+                    j+=1
+            seen.add(nums[j])    
+            j+=1     
+
+       
+        

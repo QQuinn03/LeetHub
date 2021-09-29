@@ -5,19 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def flatten(self, root: TreeNode) -> None:
+    def flatten(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
         if not root:
             return 
-        l=self.flatten(root.left)
+        l = self.flatten(root.left)
         r = self.flatten(root.right)
         
         if l:
             root.right =l
             while l and l.right:
-                l = l.right
+                l = l.right 
             l.right =r
             root.left = None
-        return root    
+        return root   
+                

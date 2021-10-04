@@ -10,17 +10,18 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        self.n=n
+        # self.n=n
         for i in range(n):
-            if self.helper(i)==1:
+            if self.helper(i,n)==1:
                 return i
         return -1
     
-    def helper(self,i):
-        for j in range(self.n):
+    def helper(self,i,n):
+        for j in range(n):
             if i ==j:
                 continue
             if knows(i,j) or not knows(j,i):
                 return False
+          
         return True    
             

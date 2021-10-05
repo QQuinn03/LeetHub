@@ -14,11 +14,13 @@ class Solution:
         l = self.flatten(root.left)
         r = self.flatten(root.right)
         
-        if l:
-            root.right =l
+        if l :
+            root.right=l
             while l and l.right:
-                l = l.right 
-            l.right =r
-            root.left = None
-        return root   
+                l=l.right 
+            l.right = r
+            root.left = None 
+        return root
+            
+            
                 

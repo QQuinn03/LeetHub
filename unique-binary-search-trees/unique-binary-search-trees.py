@@ -4,6 +4,6 @@ class Solution:
         dp[0]=1
         dp[1]=1
         for i in range(2,len(dp)):
-            for j in range(1,i+1):
-                dp[i]+=dp[j-1]*dp[i-j]
+            for j in range(i):
+                dp[i]+=dp[j]*dp[i-1-j]
         return dp[-1]        

@@ -12,12 +12,11 @@ class Solution:
             return TreeNode(postorder.pop())
         
         val = postorder[-1]
-        index = inorder.index(postorder.pop())
+        idx = inorder.index(postorder.pop())
         root = TreeNode(val)
         
-        root.right = self.buildTree(inorder[index+1:],postorder)
-        root.left = self.buildTree(inorder[:index],postorder)
+        root.right = self.buildTree(inorder[idx+1:],postorder)
+        root.left = self.buildTree(inorder[:idx],postorder)
+        
         
         return root
-         
-       

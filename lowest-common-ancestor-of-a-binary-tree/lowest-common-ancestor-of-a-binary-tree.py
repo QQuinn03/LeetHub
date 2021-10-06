@@ -12,10 +12,8 @@ class Solution:
     def helper(self,root,p,q):
         if not root:
             return 
-        if p==root:
-            return p
-        if q==root:
-            return q
+        if p==root or q==root:
+            return root
         l = self.helper(root.left,p,q)
         r = self.helper(root.right,p,q)
         
@@ -25,6 +23,6 @@ class Solution:
             return l
         if r:
             return r
-        return None
+        return 
         
     

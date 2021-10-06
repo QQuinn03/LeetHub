@@ -1,13 +1,9 @@
-class Solution(object):
-    def lengthOfLongestSubstringTwoDistinct(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         dic = {}
+        left=0
         right = 0
-        left = 0
-        res = 0
+        res=0
         
         while right<len(s):
             dic[s[right]]=right
@@ -15,11 +11,7 @@ class Solution(object):
                 val = min(dic.values())
                 left = val+1
                 del dic[s[val]]
-            res = max(res,right-left+1) 
-            
+            res=max(res,right-left+1)  
             right+=1
         return res    
-                
-                
-           
             

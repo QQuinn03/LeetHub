@@ -10,21 +10,23 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        heap = []
-        for l in lists:
-            if l:
-                heappush(heap,[l.val,l])
+        
+        que = []
+        for i in lists:
+            if i:
+                heapq.heappush(que,[i.val,i])
         
         dummy = ListNode(0)
-        cur = dummy
-        while heap:
-            val,l = heappop(heap)
-            node = ListNode(val)
-            cur.next = node
-            cur = cur.next 
-            if l.next:
-                l = l.next 
-                heappush(heap,[l.val,l])
-        return dummy.next          
+        cur=dummy
+        while que:
+            lval,l=heapq.heappop(que)
             
+            cur.next = ListNode(lval)
+            cur=cur.next
+            if l.next:
+                l=l.next 
+                heapq.heappush(que,[l.val,l])
+        return dummy.next         
                 
+            
+        

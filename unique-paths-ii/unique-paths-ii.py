@@ -13,7 +13,9 @@ class Solution:
         for j in range(0,col-1):
                 if dp[0][j]==0:
                     dp[0][j+1]=0
-        
+        for i in range(row-1):
+            if dp[i][0]==0:
+                dp[i+1][0]=0
         for i in range(1,row):
             for j in range(col):
                 if dp[i][j]==0:

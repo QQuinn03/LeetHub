@@ -9,28 +9,28 @@ class Node:
 
 class Solution:
     def __init__(self):
-        self.dic = {}
-    
+        self.dic={}
     def helper(self,node):
         if node:
             if node in self.dic:
                 return self.dic[node]
             else:
-                new = Node(node.val)
-                self.dic[node]=new
+                self.dic[node]=Node(node.val)
                 return self.dic[node]
-        return None    
-            
+        return None   
     def copyRandomList(self, head: 'Node') -> 'Node':
         if not head:
             return head
-        current = self.helper(head)
-        dummy = head
+        cur = self.helper(head)
+        
+        dummy=head
         while dummy:
-            current.next = self.helper(dummy.next)
-            current.random = self.helper(dummy.random)
-            current = current.next 
-            dummy  = dummy.next 
-        return self.dic[head]    
+
+            cur.random=self.helper(dummy.random)
+            cur.next=self.helper(dummy.next)
+            cur=cur.next 
+            dummy=dummy.next
+        return self.dic[head]     
+        
         
         

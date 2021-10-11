@@ -1,19 +1,15 @@
-import math
-class Solution(object):
-    def numSquares(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        check = [i**2 for i in range(int(sqrt(n))+1)]
-        dp = [(n+1) for i in range(n+1)]
+class Solution:
+    def numSquares(self, n: int) -> int:
+        dp=[(n+1) for i in range(n+1)]
+        square=[i**2 for i in range(int(sqrt(n))+1)]
         
-        for i in range(len(dp)):
-            for j in check:
-                if i==j:
-                    dp[i]=1
-                elif i>j:
-                    dp[i]=min(dp[i],dp[i-j]+1)
-        return dp[-1]            
-        
-        
+    
+        for i in range(n+1):
+            if i in square:
+                dp[i]=1
+            else:
+                for j in square:
+                    if i>j:
+                        dp[i]=min(dp[i],dp[i-j]+1)
+        print(dp)                
+        return dp[-1]                

@@ -4,19 +4,21 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def partition(self, head: ListNode, x: int) -> ListNode:
-        less =l1 = ListNode(0)
-        bigger = l2 = ListNode(0)
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        less = l1=ListNode(0)
+        bigger = l2=ListNode(0)
+        cur=head
+        # less.next=cur 
+        # # bigger.next=cur
         
-        while head:
-            if head.val <x:
-                l1.next = head
-                l1=l1.next
+        while cur:
+            if cur.val<x:
+                l1.next = cur
+                l1=l1.next 
             else:
-                l2.next = head
+                l2.next = cur
                 l2=l2.next 
-            head = head.next 
-        
-        l2.next = None
-        l1.next = bigger.next 
+            cur=cur.next
+        l2.next = None   
+        l1.next = bigger.next
         return less.next

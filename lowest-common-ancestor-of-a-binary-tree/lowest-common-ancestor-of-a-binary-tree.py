@@ -12,17 +12,15 @@ class Solution:
     def helper(self,root,p,q):
         if not root:
             return 
-        if p==root or q==root:
-            return root
+        if root==p:
+            return p
+        if root==q:
+            return q
         l = self.helper(root.left,p,q)
         r = self.helper(root.right,p,q)
         
         if l and r:
             return root
-        if l:
-            return l
-        if r:
-            return r
-        return 
+        if l or r:
+            return l or r
         
-    

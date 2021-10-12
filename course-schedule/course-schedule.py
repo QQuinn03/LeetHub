@@ -6,40 +6,29 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        course={i:set() for i in range(numCourses)}
-        todo = {i:set() for i in range(numCourses)}
+        todo = {i:set()for i in range(numCourses)}
+        pre= {i:set()for i in range(numCourses)}
         
         for i in prerequisites:
-            class_=i[0]
-            pre=i[1]
-            course[class_].add(pre)
-            todo[pre].add(class_)
-        que=deque([])
-        for i in course:
-            if len(course[i])==0:
+            course=i[0]
+            course_pre=i[1]
+            todo[course].add(course_pre)
+            pre[course_pre].add(course)
+            
+        que= deque([])
+        for i in todo:
+            if len(todo[i])==0:
                 que.append(i)
-        
-        visited=[]
+        visited=set()
         
         while que:
             node = que.popleft()
-            visited.append(node)
-            for nei in todo[node]:
-                course[nei].remove(node)
-                if len(course[nei])==0:
-                    que.append(nei)
-                    
-        if len(visited)!=numCourses:
-            return False
-        return True
-                    
-                
-                
-                
-                
-        
-        
+            visited.add(node)
+            for neighbor in pre[node]:
+                todo[neighbor].remove(node)
+                if len(todo[neighbor])==0:
+                    que.append(neighbor)
+        if len(visited)==numCourses:
+            return True
+        return False
             
-        
-            
-        

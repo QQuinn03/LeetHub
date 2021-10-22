@@ -1,30 +1,20 @@
-class Solution(object):
-    def merge(self, intervals):
-        """
-        :type intervals: List[List[int]]
-        :rtype: List[List[int]]
-        """
-        start=[]
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        start =[]
         end = []
-        
         for i in intervals:
             start.append(i[0])
             end.append(i[1])
-            
         start.sort()
         end.sort()
-        res=[]
+        
         idx=0
+        res=[]
         while idx<len(start):
-            arr=[]
-            arr.append(start[idx])
-            while idx+1<len(start)and start[idx+1]<=end[idx]:
+            low=idx
+            while idx<len(start)-1 and start[idx+1]<=end[idx]:
                 idx+=1
-            high=idx
-            arr.append(end[high])
-            res.append(arr)
+            high =idx
+            res.append([start[low],end[high]])
             idx+=1
         return res    
-            
-                
-        

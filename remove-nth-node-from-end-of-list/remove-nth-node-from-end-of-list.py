@@ -19,7 +19,7 @@ class Solution:
         slow = dummy
         while m!=0:
             slow = slow.next 
-            fast = fast.next 
+            #fast = fast.next 
             m-=1
         slow.next = slow.next.next 
         return dummy.next 

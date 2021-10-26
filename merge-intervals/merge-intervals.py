@@ -8,13 +8,19 @@ class Solution:
         start.sort()
         end.sort()
         
+        intveral=[]
         idx=0
+        low=0
+        high=0
         res=[]
         while idx<len(start):
             low=idx
             while idx<len(start)-1 and start[idx+1]<=end[idx]:
                 idx+=1
-            high =idx
+               
+            high=idx
             res.append([start[low],end[high]])
             idx+=1
-        return res    
+        return res     
+        
+ 

@@ -9,20 +9,17 @@ class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
             return []
-        que = deque([root])
-        next_level = []
-        res = []
-        
+        que=deque([root])
+        next_level=deque([])
+        res=[]
         while que:
-            next_level = que
-            que = deque([])
-            
+            next_level=que
+            que=deque([])
             while next_level:
-                node = next_level.popleft()
+                node=next_level.popleft()
                 if node.left:
                     que.append(node.left)
                 if node.right:
                     que.append(node.right)
-            res.append(node.val)
+            res.append(node.val)  
         return res      
-            

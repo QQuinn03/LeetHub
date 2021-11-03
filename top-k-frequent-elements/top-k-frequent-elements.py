@@ -7,15 +7,16 @@ class Solution:
                 dic[i]=1
             else:
                 dic[i]+=1
+        
+        
         que=[]
-        for i in dic:
-            print(i,dic[i])
-            heapq.heappush(que,(-dic[i],i))
-        res=[]    
-        while k>0:
-            fre,val = heapq.heappop(que)
-           
-            res.append(val)
-            k-=1
+        for key,val in dic.items():
+            if len(que)==k:
+                heapq.heappushpop(que,(val,key))
+            else:
+                heapq.heappush(que,(val,key))
+        res=[]
+        for i in que:
+            res.append(i[1])
         return res    
-            
+        

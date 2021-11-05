@@ -11,7 +11,7 @@ class Solution:
         while que:
             val,arr,idx=heapq.heappop(que)
             res.append(val)
-            if idx+1<=len(arr)-1:
+            if idx+1<len(arr):
                 idx+=1
       
                 heapq.heappush(que,(arr[idx],arr,idx))

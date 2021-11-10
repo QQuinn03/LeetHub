@@ -12,21 +12,21 @@ class Solution:
         visited=set()
         
         while que:
-            for i in range(len(que)):
-                x,y,d=que.popleft()
-          
-              
-                distance=max(distance,d)
-                
-                
-                for i in [(0,1),(0,-1),(1,0),(-1,0)]:
-                    new_x=i[0]+x
-                    new_y=i[1]+y
-                    if new_x>=0 and new_x<n and new_y>=0 and new_y<n:
-                        
-                            if grid[new_x][new_y]==0:
-                                grid[new_x][new_y]=1
-                                que.append((new_x,new_y,d+1))
+        
+            x,y,d=que.popleft()
+            #visited.add((x,y))
+
+            distance=max(distance,d)
+
+
+            for i in [(0,1),(0,-1),(1,0),(-1,0)]:
+                new_x=i[0]+x
+                new_y=i[1]+y
+                if new_x>=0 and new_x<n and new_y>=0 and new_y<n:
+
+                        if grid[new_x][new_y]==0:
+                            grid[new_x][new_y]=1
+                            que.append((new_x,new_y,d+1))
         return distance or -1                
             
         

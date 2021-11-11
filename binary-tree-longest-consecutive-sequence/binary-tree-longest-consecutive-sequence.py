@@ -6,18 +6,22 @@
 #         self.right = right
 class Solution:
     def longestConsecutive(self, root: TreeNode) -> int:
-        self.size=0
-        self.helper(root,None,0)
-        return self.size 
+        self.res=0
+        temp=0
+        self.helper(root,None,temp)
+        return self.res
     
-    def helper(self,root,parent,length):
+    def helper(self,root,parent,temp):
         if not root:
             return 
-        if parent!=None and parent.val+1==root.val:
-            length+=1
+        if parent!=None and root.val==parent.val+1:
+            print(root.val,parent.val,temp)
+            temp+=1
+            
         else:
-            length=1
-        self.size=max(self.size,length)    
-        self.helper(root.left,root,length)
-        self.helper(root.right,root,length)
-     
+            temp=1
+       
+        self.res=max(self.res,temp)
+        self.helper(root.left,root,temp)
+        self.helper(root.right,root,temp)
+            

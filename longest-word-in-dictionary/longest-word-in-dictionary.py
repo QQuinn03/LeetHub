@@ -1,16 +1,13 @@
 class Solution:
     def longestWord(self, words: List[str]) -> str:
         words.sort()
-     
+        seen=set()
+        seen.add("")
         res=""
-        st=set()
-        st.add("")
         for word in words:
-            if word[:-1] in st:
+            if word[:-1] in seen:
                 if len(word)>len(res):
                     res=word
-                    
-                st.add(word)
-        return res        
-            
-        
+                seen.add(word)
+        return res    
+       

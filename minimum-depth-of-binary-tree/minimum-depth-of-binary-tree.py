@@ -15,9 +15,10 @@ class Solution:
         if not root:
             return 0
         if root.left and root.right:
-            return 1+min(self.helper(root.left),self.helper(root.right))
-        if not root.left:
-             return 1+self.helper(root.right)
+            l=self.helper(root.left)
+            r=self.helper(root.right)
+            return 1+min(l,r)
         if not root.right:
-             return 1+self.helper(root.left)
-        
+            return 1+self.helper(root.left)
+        if not root.left:
+            return 1+self.helper(root.right)

@@ -7,12 +7,13 @@ class Solution:
             heapq.heappush(pq,(i[idx],i,idx))
          
         res=[]
-        while pq:
+        
+        while k:
             val,arr,idx=heapq.heappop(pq)
             res.append(val)
             if idx+1<len(arr):
                 heapq.heappush(pq,(arr[idx+1],arr,idx+1))
-
-        return res[k-1]         
+            k-=1
+        return val       
             
             

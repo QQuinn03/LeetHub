@@ -23,6 +23,7 @@ class Solution:
     
     def helper(self,board,i,j,row,col):
         if i<0 or i>=row or j<0 or j >=col or board[i][j]!="O":
+            #print("h",i,j,board)
             return 
         board[i][j]="G"
         self.helper(board,i+1,j,row,col)

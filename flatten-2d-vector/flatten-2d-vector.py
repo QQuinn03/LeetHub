@@ -3,25 +3,24 @@ class Vector2D:
     def __init__(self, vec: List[List[int]]):
         self.v = vec
         self.row=0
-        self.col = 0
+        self.col=0
+       
         
 
     def next(self) -> int:
-        if self.hasNext()==False:
+        if self.hasNext():
+            val=self.v[self.row][self.col]
+            self.col+=1
+            return val
+        else:
             return
-        val=self.v[self.row][self.col]
-        self.col+=1
-        return val
         
-    
-        
-
     def hasNext(self) -> bool:
         while self.row<len(self.v):
             if self.col<len(self.v[self.row]):
                 return True
             self.row+=1
-            self.col=0 
+            self.col=0
         return False     
         
 

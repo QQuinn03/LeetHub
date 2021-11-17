@@ -1,6 +1,7 @@
 class Solution:
     def longestWord(self, words: List[str]) -> str:
         words.sort()
+        print(words)
         seen=set()
         seen.add("")
         res=""
@@ -9,5 +10,6 @@ class Solution:
                 if len(word)>len(res):
                     res=word
                 seen.add(word)
-        return res    
        
+        return res       
+            

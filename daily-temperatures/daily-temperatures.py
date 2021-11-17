@@ -9,6 +9,5 @@ class Solution:
             if stack:
                 res[i]=stack[-1]-i
             stack.append(i)
-        return res    
-                
+        return res     
         

@@ -8,19 +8,14 @@ class Solution:
         start.sort()
         end.sort()
         
-        low = 0
-        idx=0
+        low=0
         high=0
         res=[]
-        
         while low<len(start):
-            merge=[start[low]]
+            num=start[low]
             while low<len(start)-1 and start[low+1]<=end[low]:
                 low+=1
-            high=low
-            merge.append(end[high])
-            res.append(merge)
+            high=low    
+            res.append([num,end[high]])
             low+=1
         return res    
-                
-            

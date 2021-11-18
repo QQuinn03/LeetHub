@@ -12,13 +12,14 @@ class Solution:
         
         low=0
         high=0
-        
+        res=0
         while low<len(start):
             while low<=len(start)-1 and start[low]<end[high]:
-                res+=1
                 low+=1
+                res+=1
             else:
                 high+=1
             low+=1
         return res     
         
+  

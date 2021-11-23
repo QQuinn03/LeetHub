@@ -1,32 +1,27 @@
 class Solution:
     def getMaximumGold(self, grid: List[List[int]]) -> int:
+        row=len(grid)
+        col=len(grid[0])
+        res=0
         
-        if len(grid) == 0 or grid is None:
-            return 0
-        
-        r,c = len(grid), len(grid[0])
-        max_gold = 0
-        current_gold = 0
-        visited = [[False for i in range(len(grid[0]))] for j in range(len(grid))]
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if grid[i][j] > 0:
-                    current_gold = self.find_gold(grid, i,j , r, c,visited)
-                    max_gold = max(current_gold, max_gold)
-
-        return max_gold
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j]!=0:
+                    seen=set()
+                    temp=self.helper(grid,row,col,i,j,seen)
+                    res=max(res,temp)
+        return res
     
-    def find_gold(self,grid, i,j, r,c,visited):
-
-        if i < 0 or j < 0 or i >= r or j >= c or grid[i][j] == 0 or visited[i][j]:
+    def helper(self,grid,row,col,i,j,seen):
+        if i<0 or i>=row or j<0 or j>=col or (i,j) in seen or grid[i][j]==0:
             return 0
-        visited[i][j] = True
-        up = self.find_gold(grid, i-1, j , r,c, visited)
-        down = self.find_gold(grid, i+1, j , r,c, visited)
-        left = self.find_gold(grid, i, j-1 , r,c, visited)
-        right = self.find_gold(grid, i, j+1 , r,c, visited) 
-        visited[i][j] = False
-
-        return max(up, max(down, max(left, right)))+ grid[i][j]
-
+        seen.add((i,j))
+        cur_val=grid[i][j]
+        l=self.helper(grid,row,col,i,j-1,seen)
+        r=self.helper(grid,row,col,i,j+1,seen)
+        u=self.helper(grid,row,col,i+1,j,seen)
+        d=self.helper(grid,row,col,i-1,j,seen)
+        seen.remove((i,j))
+        return cur_val+max(l,max(r,max(u,d)))
+        
         

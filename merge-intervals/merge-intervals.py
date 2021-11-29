@@ -10,12 +10,16 @@ class Solution:
         
         low=0
         high=0
+        idx=0
         res=[]
-        while low<len(start):
-            num=start[low]
-            while low<len(start)-1 and start[low+1]<=end[low]:
-                low+=1
-            high=low    
-            res.append([num,end[high]])
-            low+=1
-        return res    
+        
+        while idx<len(start):
+            low=idx
+            while idx+1<len(start) and start[idx+1]<=end[idx]:
+                idx+=1
+            high=idx
+            arr=[start[low],end[high]]
+            res.append(arr)
+            idx+=1
+        return res     
+     

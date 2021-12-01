@@ -14,8 +14,8 @@ class Solution(object):
         que = []
         for i in lists:
             if i:
-                heapq.heappush(que,[i.val,i])
-        
+                heapq.heappush(que,(i.val,i))
+      
         dummy = ListNode(0)
         cur=dummy
         while que:
@@ -25,7 +25,7 @@ class Solution(object):
             cur=cur.next
             if l.next:
                 l=l.next 
-                heapq.heappush(que,[l.val,l])
+                heapq.heappush(que,(l.val,l))
         return dummy.next         
                 
             

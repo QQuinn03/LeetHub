@@ -8,9 +8,9 @@ class Solution:
             if i not in days:
                 dp[i]=dp[i-1]
             else:
-                for day in [1,7,30]:
-                    dp[i]=min(dp[i],dp[max((i-day),0)]+prices[day])
-                    #dp[i]=min(dp[i],dp[max((i-day),0)]+prices[day])
-        print(dp)            
-        return dp[-1]            
-            
+                for price in prices:
+                    val=prices[price]
+              
+                    dp[i]=min(dp[i],dp[max(i-price,0)]+val)
+        print(dp)        
+        return dp[-1]           

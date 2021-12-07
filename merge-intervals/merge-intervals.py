@@ -13,13 +13,17 @@ class Solution:
         idx=0
         res=[]
         
+        #  1 2  8  15
+        #  3 6  10 18
+        
         while idx<len(start):
-            low=idx
+            low=start[idx]
             while idx+1<len(start) and start[idx+1]<=end[idx]:
                 idx+=1
-            high=idx
-            arr=[start[low],end[high]]
-            res.append(arr)
+            else:    
+                high=end[idx]
+            res.append([low,high])
             idx+=1
-        return res     
-     
+        return res      
+      
+                

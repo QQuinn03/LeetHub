@@ -6,13 +6,11 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        res =[]
-      
+        que=[]
         for i in nums:
-            heapq.heappush(res,i)
-        print(heapq.nlargest(k,res))    
-        return heapq.nlargest(k,res)[-1] 
-            
-        # nums.sort()
-        # print(nums)
-        # return nums[-k]
+            if len(que)==k:
+                heapq.heappushpop(que,i)
+            else:
+                heapq.heappush(que,i)
+             
+        return que[0]         

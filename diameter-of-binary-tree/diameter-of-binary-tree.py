@@ -10,13 +10,14 @@ class Solution:
         self.helper(root)
         return self.res
        
+       
     
     def helper(self,root):
         if not root:
             return 0
         l=self.helper(root.left)
         r=self.helper(root.right)
-        
         self.res=max(self.res,l+r)
+        return 1+max(l,r)
         
-        return 1+max(l,r)       
+        

@@ -16,14 +16,17 @@ class Solution:
         #  1 2  8  15
         #  3 6  10 18
         
-        while idx<len(start):
-            low=start[idx]
+        while idx <len(end):
+            val1=start[idx]
             while idx+1<len(start) and start[idx+1]<=end[idx]:
                 idx+=1
-            else:    
-                high=end[idx]
-            res.append([low,high])
-            idx+=1
-        return res      
-      
+            else:
+                val2=end[idx]
+            idx+=1    
+            arr=[val1,val2]
+            res.append(arr)
+        return res    
+            
+        
+   
                 

@@ -24,7 +24,7 @@ class Solution:
         self.helper(arr,idx+1,path+arr[idx]+"*",res,target)
         self.helper(arr,idx+1,path+arr[idx]+"-",res,target)
         if (path and path[-1] not in ["-","+","*"] and arr[idx]=="0") or arr[idx]!="0":
-        
+           
             self.helper(arr,idx+1,path+arr[idx],res,target)
             
         

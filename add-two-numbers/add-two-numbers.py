@@ -10,10 +10,11 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        dummy=ListNode(0)
-        current = dummy
-        carry =0
         val=0
+        temp=0
+        head = ListNode(0)
+        temp=head
+        carry=0
         while l1 or l2:
             if l1:
                 val+=l1.val
@@ -21,22 +22,18 @@ class Solution(object):
             if l2:
                 val+=l2.val
                 l2=l2.next
-            val+=carry 
-     
+                
+            val+=carry
+            digit = val%10
             carry=val//10
-            val = val%10
-            node = ListNode(val)
-            current.next=node
-            current = current.next
+            node = ListNode(digit)
+            temp.next=node 
+            temp=temp.next
             val=0
         if carry==1:
-            current.next = ListNode(carry)
-        return dummy.next     
+            node=ListNode(1)
+            temp.next=node
+    
+        return head.next        
             
                 
-            
-         
-                
-            
-            
-        

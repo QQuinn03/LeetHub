@@ -5,9 +5,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        dic= {}
-        for i in range(len(nums)):
-            if nums[i] not in dic:
-                dic[target-nums[i]]=i
+   
+        dic={}
+        
+        for idx,val in enumerate(nums):
+            if val not in dic:
+                dic[target-val]=idx
             else:
-                return [i,dic[nums[i]]]
+                return [idx,dic[val]]
+                

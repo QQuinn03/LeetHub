@@ -5,20 +5,19 @@ class Solution(object):
         :rtype: str
         """
         res=""
+        
         for i in range(len(s)):
             temp = self.helper(s,i,i)
-            if len(res)<len(temp):
+            if len(temp)>len(res):
                 res=temp
-            temp = self.helper(s,i,i+1)
-            if len(res)<len(temp):
+            temp=self.helper(s,i,i+1)
+            if len(temp)>len(res):
                 res=temp
         return res
     
-    def helper(self,s,i,j):
-        while i>-1 and j<len(s) and s[i]==s[j]:
-                i-=1
-                j+=1
-        return s[i+1:j]        
-            
-            
-        
+    def helper(slef,s,i,j):
+        while i>=0 and j<len(s) and s[i]==s[j]:
+            i-=1
+            j+=1
+        return s[i+1:j]    
+                

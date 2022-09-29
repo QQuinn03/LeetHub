@@ -1,12 +1,20 @@
-class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
-        i=0
-        idx=0
-        while i<len(nums):
-            if nums[i]==val:
-                i+=1
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        idx1=0
+        idx2=0
+        
+        while idx2<len(nums):
+            if nums[idx2]!=val:
+                nums[idx1]=nums[idx2]
+                idx1+=1
+                idx2+=1
             else:
-                nums[idx],nums[i]=nums[i],nums[idx]
-                idx+=1
-                i+=1
-        return idx          
+                idx2+=1
+        
+        return idx1
+        

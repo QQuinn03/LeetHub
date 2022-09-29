@@ -4,28 +4,32 @@
 #         self.val = val
 #         self.next = next
 class Solution(object):
-    def mergeTwoLists(self, l1, l2):
+    def mergeTwoLists(self, list1, list2):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type list1: Optional[ListNode]
+        :type list2: Optional[ListNode]
+        :rtype: Optional[ListNode]
         """
-        
         dummy = ListNode(0)
+        h1=list1
+        h2=list2
         cur = dummy
-        while l1 or l2:
-            if not l1:
-                dummy.next = l2
-                l2 = l2.next 
-            elif not l2:
-                dummy.next = l1
-                l1 = l1.next 
-            elif l1.val <l2.val:
-                dummy.next = l1
-                l1 = l1.next
+        while h1 or h2:
+            if not h2:
+                cur.next = h1
+                h1=h1.next 
+                
+            elif not h1:
+                cur.next = h2
+                h2=h2.next 
+           
+            elif h1.val>h2.val:
+                cur.next = h2
+                h2=h2.next 
             else:
-                dummy.next = l2
-                l2 = l2.next 
-            dummy = dummy.next    
-        return cur.next         
+                cur.next = h1
+                h1=h1.next
+            cur=cur.next 
+        return dummy.next    
+                
                 
